@@ -3,14 +3,15 @@
 
 import express from "express";
 import mongoose from "mongoose";
-
+import cors from 'cors';
 import { Book } from "./model/bookModel.js";
 import { PORT, MONGOdb_URL } from "./config.js";
 import booksRoute from './routes/booksRoute.js';
 
 const app = express();
+app.use(cors());
 app.use(express.json());
-app.use('/book', booksRoute);
+app.use('/books', booksRoute);
 
 app.listen(PORT, () => {
   console.log("Running at Port: " + PORT);
