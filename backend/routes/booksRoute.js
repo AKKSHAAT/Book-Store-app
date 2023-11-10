@@ -60,7 +60,7 @@ try {
 router.get("/:id", async (req, res)=>{
 try {
     const id = req.params.id;
-    const book = await Book.find({_id:id})
+    const book = await Book.findOne({_id:id})
     .then((book)=>{
     res.status(200).send(JSON.stringify(book));
     })

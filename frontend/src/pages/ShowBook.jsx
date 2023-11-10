@@ -17,7 +17,7 @@ export const ShowBook = () => {
     axios
       .get(LINK)
       .then( response => {
-        setBook(response.data[0]);
+        setBook(response.data);
 
         setLoading(false);
       })
@@ -28,37 +28,36 @@ export const ShowBook = () => {
   }, []);
 
   return (
-    <div className="p-4">
+    <div className="p-4 text-white">
       
-      <h1 className="text-3xl my-4">Show Book</h1>
+      <h1 className="text-3xl my-4 text-white">Show Book</h1>
       <BackButton />
       {loading ? (
         <Spinner />
       ) : (
-        <div className="flex flex-col border-4 border-purple-400 rounded-xl w-fit p-4 my-2  ">
+        <div className="flex flex-col border-4 border-purple-400 rounded-xl font-mono w-fit p-4 my-2 ">
           <div className="my-4">
-            <span className="text-xl mr-4 text-grey-500">id</span>
-            <span> {book._id} </span>
+            <h1 className="text-4xl mr-4 text-grey-500">{book.title}</h1>
           </div>
-
-          <div className="my-4">
-            <span className="text-xl mr-4 text-grey-500">Title</span>
-            <span> {book.title} </span>
-          </div>
-
-          <div className="my-4">
-            <span className="text-xl mr-4 text-grey-500">Author</span>
+          <hr></hr>
+          <div className="my-4 flex justify-around">
+            <span className="text-xl mr-2 text-grey-500">Author|</span>
             <span> {book.auther} </span>
           </div>
 
-          <div className="my-4">
-            <span className="text-xl mr-4 text-grey-500">Create at</span>
-            <span> {new Date(book.createdAt).toString().slice(0,25)} </span>
+          <div className="my-1 flex justify-between">
+            <span className="text-xl mr-2 text-grey-500">Create at|</span>
+            <span> {new Date(book.createdAt).toString().slice(0,15)} </span>
           </div>
 
-          <div className="my-4">
-            <span className="text-xl mr-4 text-grey-500">Last updated</span>
-            <span> {new Date(book.updatedAt).toString().slice(0,25)} </span>
+          <div className="my-1 flex justify-between">
+            <span className="text-xl mr-2 text-grey-500">Updated|</span>
+            <span> {new Date(book.updatedAt).toString().slice(0,15)} </span>
+          </div>
+
+          <div className="my-1 ">
+            <span className="text-xl mr-2 text-grey-500">id|</span>
+            <span className="text-gray-400"> {book._id} </span>
           </div>
 
         </div>
