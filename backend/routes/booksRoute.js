@@ -4,6 +4,7 @@ import { Book } from '../model/bookModel.js';
 const router = express.Router();
 
 router.post("/", (req, res) => {
+  console.log("post");
     try {
       const book = req.body;
       if( !book.title || !book.auther || !book.publishYear) {
